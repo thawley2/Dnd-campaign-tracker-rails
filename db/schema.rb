@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2023_03_21_185903) do
     t.string "dm_name"
     t.boolean "first_dm"
     t.integer "difficult_rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(version: 2023_03_21_185903) do
     t.string "character_name"
     t.boolean "new_player"
     t.integer "char_lvl"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["campaign_id"], name: "index_players_on_campaign_id"
   end
 

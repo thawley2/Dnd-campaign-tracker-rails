@@ -6,7 +6,7 @@ class CreateCampaigns < ActiveRecord::Migration[5.2]
       t.boolean :first_dm
       t.integer :difficult_rating
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

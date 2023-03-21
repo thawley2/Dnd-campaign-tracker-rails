@@ -7,7 +7,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.boolean :new_player
       t.integer :char_lvl
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
