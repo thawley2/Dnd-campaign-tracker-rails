@@ -1,0 +1,9 @@
+<h1><%= @campaign.campaign_name %> Players</h1>
+<hr>
+<% @players.each do |player| %>
+<h3>Name: <%= player.player_name %></h3>
+<p>Character: <%= player.character_name %></p>
+<p>New: <%= player.new_player %></p>
+<p>Character Level: <%= player.char_lvl %></p>
+<br>
+<% end %>
