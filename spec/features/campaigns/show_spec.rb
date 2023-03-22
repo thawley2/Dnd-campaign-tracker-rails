@@ -8,11 +8,11 @@ RSpec.describe '/campaigns/:id', type: :feature do
     end
     it 'I see the campaign with that id including the campaign attributes' do
 
-      visit '/campaigns/:id'
-
-      expect(page).to have_content("Name: #{@waterdeep.campaign_name}")
-      expect(page).to have_content("Name of DM #{@waterdeep.dm_name}")
-      expect(page).to have_content("First DM #{@waterdeep.first_dm}")
+      visit "/campaigns/#{@waterdeep.id}"
+save_and_open_page
+      expect(page).to have_content(@waterdeep.campaign_name)
+      expect(page).to have_content("Name of DM: #{@waterdeep.dm_name}")
+      expect(page).to have_content("First DM: #{@waterdeep.first_dm}")
       expect(page).to have_content("Difficult Rating: #{@waterdeep.difficult_rating}")
     end
   end
