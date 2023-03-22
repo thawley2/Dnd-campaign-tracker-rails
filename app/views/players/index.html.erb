@@ -1,0 +1,8 @@
+<h1> All Current DnD Players </h1>
+
+<% @players.each do |player| %>
+  <h3><%= player.character_name %></h3>
+  <p>Player Name: <%= player.player_name %></p>
+  <p>New Player: <%= player.new_player %></p>
+  <p>Character Level: <%= player.char_lvl %></p>
+  <% end %>
