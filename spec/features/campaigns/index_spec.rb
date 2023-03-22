@@ -10,8 +10,9 @@ RSpec.describe '/campaigns', type: :feature do
 
       visit '/campaigns'
 
-      expect(page).to have_content(@waterdeep.name)
-      expect(page).to have_content(@dragon_heist.name)
+      expect(page).to have_content('DnD Campaigns')
+      expect(page).to have_content(@waterdeep.campaign_name)
+      expect(page).to have_content(@dragon_heist.campaign_name)
     end
   end
 end
