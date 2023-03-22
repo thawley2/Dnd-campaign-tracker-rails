@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/campaigns', to: 'campaigns#index'
   get '/campaigns/:id', to: 'campaigns#show'
   get '/players', to: 'players#index'
+  get '/players/:id', to: 'players#show'
 end
