@@ -12,10 +12,11 @@ RSpec.describe '/players/:id', type: :feature do
 
       visit "/players/#{@angel.id}"
 
+      expect(page).to have_content("Member of: #{@waterdeep.campaign_name}")
       expect(page).to have_content(@angel.player_name)
-      expect(page).to have_content(@angel.character_name)
-      expect(page).to have_content(@angel.new_player)
-      expect(page).to have_content(@angel.char_lvl)
+      expect(page).to have_content("Character Name: #{@angel.character_name}")
+      expect(page).to have_content("New Player: #{@angel.new_player}")
+      expect(page).to have_content("Character Level: #{@angel.char_lvl}")
     end
   end
 end
