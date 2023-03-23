@@ -4,6 +4,7 @@ RSpec.describe '/campaigns', type: :feature do
   
   before(:each) do
     @waterdeep = Campaign.create!(campaign_name: 'Waterdeep', dm_name: 'Thomas', first_dm: true, difficult_rating: 5)
+    sleep(1)
     @dragon_heist = Campaign.create!(campaign_name: 'Dragon Heist', dm_name: 'Lucy', first_dm: false, difficult_rating: 4)
   end
 
@@ -15,6 +16,15 @@ RSpec.describe '/campaigns', type: :feature do
       expect(page).to have_content('DnD Campaigns')
       expect(page).to have_content(@waterdeep.campaign_name)
       expect(page).to have_content(@dragon_heist.campaign_name)
+    end
+
+    it 'I see that campaigns are ordered by most recently created first along with when it was created' do
+
+      visit '/campaigns' 
+save_and_open_page
+      expect(page).to have_content("Created: #{@waterdeep.created_at}")
+      expect(page).to have_content("Created: #{@dragon_heist.created_at}")
+      expect(@waterdeep.campaign_name).to appear_before(@dragon_heist.campaign_name)
     end
   end
 end
