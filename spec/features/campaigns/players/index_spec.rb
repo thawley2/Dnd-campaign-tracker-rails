@@ -24,5 +24,14 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(page).to have_content("Character Level: #{@crow.char_lvl}")
 
     end
+
+    it 'I see a link at the top of the page that takes me to the Players index' do
+
+      visit "/campaigns/#{@waterdeep.id}/players" 
+      
+      click_link('View All Players')
+
+      expect(page).to have_current_path('/players')
+    end
   end
 end

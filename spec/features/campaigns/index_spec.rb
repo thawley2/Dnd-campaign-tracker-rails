@@ -26,5 +26,14 @@ RSpec.describe '/campaigns', type: :feature do
       expect(page).to have_content("Created: #{@dragon_heist.created_at}")
       expect(@waterdeep.campaign_name).to appear_before(@dragon_heist.campaign_name)
     end
+
+    it 'I see a link at the top of the page that takes me to the Players index' do
+
+      visit '/campaigns' 
+      save_and_open_page
+      click_link('View All Players')
+
+      expect(page).to have_current_path('/players')
+    end
   end
 end
