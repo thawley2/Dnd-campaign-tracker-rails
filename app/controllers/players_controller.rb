@@ -5,6 +5,6 @@ class PlayersController < ApplicationController
 
   def show 
     @player = Player.find(params[:id])
-    @player_campaign = @player.campaign.campaign_name
+    @player_campaign = @player.campaign
   end
 end

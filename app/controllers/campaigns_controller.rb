@@ -5,5 +5,6 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @num_of_players = @campaign.num_of_players
   end
 end
