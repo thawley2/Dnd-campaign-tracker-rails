@@ -4,4 +4,8 @@ class Campaign < ApplicationRecord
   def self.order_by_created_at
     order(created_at: :asc)
   end
+
+  def num_of_players
+    players.size
+  end
 end
