@@ -5,6 +5,10 @@ RSpec.describe '/campaigns/:id', type: :feature do
   before(:each) do
     @waterdeep = Campaign.create!(campaign_name: 'Waterdeep', dm_name: 'Thomas', first_dm: true, difficult_rating: 5)
     @dragon_heist = Campaign.create!(campaign_name: 'Dragon Heist', dm_name: 'Lucy', first_dm: false, difficult_rating: 4)
+
+    @crow = @dragon_heist.players.create!(player_name: 'Crow', character_name: 'Nocturia', new_player: true, char_lvl: 2)
+    @alec = @dragon_heist.players.create!(player_name: 'Alec', character_name: 'Hockly', new_player: false, char_lvl: 2)
+    @andrew = @dragon_heist.players.create!(player_name: 'Andrew', character_name: 'Georgio Clunamous', new_player: false, char_lvl: 2)
   end
 
   describe 'as a visitor, when I visit the campaign show page' do
@@ -16,6 +20,13 @@ RSpec.describe '/campaigns/:id', type: :feature do
       expect(page).to have_content("Name of DM: #{@waterdeep.dm_name}")
       expect(page).to have_content("First DM: #{@waterdeep.first_dm}")
       expect(page).to have_content("Difficult Rating: #{@waterdeep.difficult_rating}")
+    end
+
+    it 'shows the number of players that are in the campaign' do
+      
+      visit "/campaigns/#{@dragon_heist.id}"
+      
+      expect(page).to have_content("Total Players: #{@dragon_heist.players.size}")
     end
   end
 end
