@@ -21,7 +21,7 @@ RSpec.describe '/campaigns', type: :feature do
     it 'I see that campaigns are ordered by most recently created first along with when it was created' do
 
       visit '/campaigns' 
-save_and_open_page
+      
       expect(page).to have_content("Created: #{@waterdeep.created_at}")
       expect(page).to have_content("Created: #{@dragon_heist.created_at}")
       expect(@waterdeep.campaign_name).to appear_before(@dragon_heist.campaign_name)

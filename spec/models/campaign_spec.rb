@@ -12,7 +12,7 @@ RSpec.describe Campaign, type: :model do
   end
 
   describe 'instance methods' do
-    it '#order_created_at' do
+    it '#order_by_created_at' do
       
       expect(Campaign.order_by_created_at).to eq([@waterdeep, @dragon_heist])
     end

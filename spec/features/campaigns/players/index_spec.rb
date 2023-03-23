@@ -11,7 +11,7 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
 
     it 'I see each player that is associated with that campaign with each players attributes' do
       visit "/campaigns/#{@waterdeep.id}/players"
-save_and_open_page
+# save_and_open_page
       expect(page).to have_content("#{@waterdeep.campaign_name} Players")
       expect(page).to have_content("Name: #{@angel.player_name}")
       expect(page).to have_content("Character: #{@angel.character_name}")
