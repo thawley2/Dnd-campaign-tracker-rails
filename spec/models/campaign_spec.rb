@@ -19,6 +19,7 @@ RSpec.describe Campaign, type: :model do
     it '::order_by_created_at' do
       
       expect(Campaign.order_by_created_at).to eq([@waterdeep, @dragon_heist])
+      # update, created date of @dragon_heist to show that the method is working. 
     end
 
     it '#num_of_players' do
