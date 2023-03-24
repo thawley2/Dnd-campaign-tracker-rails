@@ -10,9 +10,11 @@
   </head>
 
   <body>
-  <header>
-  <%= link_to 'View All Players', '/players' %>
-  </header>
+  <div>
+  <%= link_to 'Campaigns', '/campaigns' %>
+  &nbsp; &nbsp; &nbsp;
+  <%= link_to 'Players', '/players' %>
+  </div>
     <%= yield %>
   </body>
 </html>

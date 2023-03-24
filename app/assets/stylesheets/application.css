@@ -16,3 +16,11 @@
 .tab {
   padding-left: 15px;
 }
+
+div {
+  background-color: rgb(147, 139, 139);
+  color: red;
+  padding: 10px;
+  font-size: large;
+  margin-right: 20px;
+}
