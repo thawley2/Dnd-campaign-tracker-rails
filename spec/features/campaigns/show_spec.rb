@@ -45,5 +45,12 @@ RSpec.describe '/campaigns/:id', type: :feature do
 
       expect(page).to have_current_path('/campaigns')
     end
+
+    it 'I see a button to take me to that Campaigns Players page' do
+      visit "/campaigns/#{@dragon_heist.id}"
+      click_link("#{@dragon_heist.campaign_name} Players")
+
+      expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/players")
+    end
   end
 end
