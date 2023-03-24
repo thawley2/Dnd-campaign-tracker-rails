@@ -39,5 +39,22 @@ RSpec.describe '/players', type: :feature do
       expect(page).to have_content("New Player: #{@alec.new_player}")
       expect(page).to have_content("Character Level: #{@alec.char_lvl}")
     end
+
+    it 'I see a link at the top of the page that takes me to the Players index' do
+
+      visit "/campaigns/#{@dragon_heist.id}" 
+      
+      click_link('Players')
+
+      expect(page).to have_current_path('/players')
+    end
+    
+    it 'I see a link at the top of the page that takes me to the Campaigns index' do
+
+      visit '/players' 
+      click_link('Campaigns')
+
+      expect(page).to have_current_path('/campaigns')
+    end
   end
 end

@@ -1,5 +1,6 @@
 <h1><%= @player.player_name %></h1>
-<h3>Member of: <%= @player.campaign.campaign_name %></h3> 
+<hr>
+<h3>Member of: <%= @player.player_campaign %></h3> 
 <%# move to model and test %>
 <p>Character Name: <%= @player.character_name %></p>
 <p>New Player: <%= @player.new_player %></p>

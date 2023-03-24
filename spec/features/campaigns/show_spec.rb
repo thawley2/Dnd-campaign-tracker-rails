@@ -28,5 +28,29 @@ RSpec.describe '/campaigns/:id', type: :feature do
       
       expect(page).to have_content("Total Players: #{@dragon_heist.players.size}")
     end
+
+    it 'I see a link at the top of the page that takes me to the Players index' do
+
+      visit "/campaigns/#{@dragon_heist.id}" 
+      
+      click_link('Players')
+
+      expect(page).to have_current_path('/players')
+    end
+
+    it 'I see a link at the top of the page that takes me to the Campaigns index' do
+
+      visit "/campaigns/#{@dragon_heist.id}" 
+      click_link('Campaigns')
+
+      expect(page).to have_current_path('/campaigns')
+    end
+
+    it 'I see a button to take me to that Campaigns Players page' do
+      visit "/campaigns/#{@dragon_heist.id}"
+      click_link("#{@dragon_heist.campaign_name} Players")
+
+      expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/players")
+    end
   end
 end

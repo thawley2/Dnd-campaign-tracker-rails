@@ -1,5 +1,7 @@
 <h1><%= @campaign.campaign_name%></h1>
+<hr>
 <p>Name of DM: <%= @campaign.dm_name %>
 <p>First DM: <%= @campaign.first_dm %>
 <p>Difficult Rating: <%= @campaign.difficult_rating %>
 <p>Total Players: <%= @num_of_players %></p>
+<%= link_to "#{@campaign.campaign_name} Players", "/campaigns/#{@campaign.id}/players", class: 'button' %>

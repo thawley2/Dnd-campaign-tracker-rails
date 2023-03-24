@@ -4,7 +4,6 @@ RSpec.describe '/campaigns', type: :feature do
   
   before(:each) do
     @waterdeep = Campaign.create!(campaign_name: 'Waterdeep', dm_name: 'Thomas', first_dm: true, difficult_rating: 5)
-    sleep(1)
     @dragon_heist = Campaign.create!(campaign_name: 'Dragon Heist', dm_name: 'Lucy', first_dm: false, difficult_rating: 4)
   end
 
@@ -25,6 +24,22 @@ RSpec.describe '/campaigns', type: :feature do
       expect(page).to have_content("Created: #{@waterdeep.created_at}")
       expect(page).to have_content("Created: #{@dragon_heist.created_at}")
       expect(@waterdeep.campaign_name).to appear_before(@dragon_heist.campaign_name)
+    end
+
+    it 'I see a link at the top of the page that takes me to the Players index' do
+
+      visit '/campaigns' 
+      click_link('Players')
+
+      expect(page).to have_current_path('/players')
+    end
+
+    it 'I see a link at the top of the page that takes me to the Campaigns index' do
+
+      visit '/campaigns' 
+      click_link('Campaigns')
+
+      expect(page).to have_current_path('/campaigns')
     end
   end
 end
