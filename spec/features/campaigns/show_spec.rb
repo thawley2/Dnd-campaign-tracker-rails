@@ -33,9 +33,17 @@ RSpec.describe '/campaigns/:id', type: :feature do
 
       visit "/campaigns/#{@dragon_heist.id}" 
       
-      click_link('View All Players')
+      click_link('Players')
 
       expect(page).to have_current_path('/players')
+    end
+
+    it 'I see a link at the top of the page that takes me to the Campaigns index' do
+
+      visit "/campaigns/#{@dragon_heist.id}" 
+      click_link('Campaigns')
+
+      expect(page).to have_current_path('/campaigns')
     end
   end
 end

@@ -29,10 +29,17 @@ RSpec.describe '/campaigns', type: :feature do
     it 'I see a link at the top of the page that takes me to the Players index' do
 
       visit '/campaigns' 
-      save_and_open_page
-      click_link('View All Players')
+      click_link('Players')
 
       expect(page).to have_current_path('/players')
+    end
+
+    it 'I see a link at the top of the page that takes me to the Campaigns index' do
+
+      visit '/campaigns' 
+      click_link('Campaigns')
+
+      expect(page).to have_current_path('/campaigns')
     end
   end
 end
