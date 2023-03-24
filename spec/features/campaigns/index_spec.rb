@@ -41,5 +41,24 @@ RSpec.describe '/campaigns', type: :feature do
 
       expect(page).to have_current_path('/campaigns')
     end
+
+    it 'I see a link to create a new Campaign record, "New Campaign"' do
+
+      visit '/campaigns'
+      click_link("New Campaign")
+
+      expect(page).to have_current_path('/campaigns/new')
+save_and_open_page
+      fill_in 'Campaign Name:', with: 'Tales from the Infinite Staircase'
+      fill_in 'DM Name:', with: 'Tony'
+      fill_in 'First DM:', with: false
+      fill_in 'Difficulty Rating:', with: 5
+      click_button("Create")
+
+      expect(page).to have_current_path('/campaigns')
+
+      expect(page).to have_content('Tales from the Infinite Staircase')
+
+    end
   end
 end
