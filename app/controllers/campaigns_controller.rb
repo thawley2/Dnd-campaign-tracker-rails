@@ -12,12 +12,22 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    Campaign.create(
-      campaign_name: params[:campaign_name],
-      dm_name: params[:dm_name],
-      first_dm: params[:first_dm],
-      difficult_rating: params[:difficult_rating]
-    )
+    Campaign.create(campaign_params)
     redirect_to '/campaigns'
+  end
+
+  def edit
+    @campaign = Campaign.find(params[:id])
+  end
+
+  def update
+    campaign = Campaign.find(params[:id])
+    campaign.update(campaign_params)
+    redirect_to "/campaigns/#{campaign.id}"
+  end
+
+  private
+  def campaign_params
+    params.permit(:campaign_name, :dm_name, :first_dm, :difficult_rating)
   end
 end
