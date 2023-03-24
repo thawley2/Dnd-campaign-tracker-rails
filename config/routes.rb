@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/campaigns', to: 'campaigns#index'
   get '/campaigns/new', to: 'campaigns#new'
   post '/campaigns', to: 'campaigns#create'
+  get '/campaigns/:id/edit', to: 'campaigns#edit'
+  patch '/campaigns/:id', to: 'campaigns#update'
   get '/players', to: 'players#index'
   get '/players/:id', to: 'players#show'
   get '/campaigns/:id', to: 'campaigns#show'

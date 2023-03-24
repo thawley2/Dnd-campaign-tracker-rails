@@ -52,5 +52,18 @@ RSpec.describe '/campaigns/:id', type: :feature do
 
       expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/players")
     end
+
+    it 'I see a link to update the Campaign, "Update Campaign"' do
+      visit "/campaigns/#{@dragon_heist.id}"
+      click_link("Update Campaign")
+
+      expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/edit")
+# save_and_open_page
+      fill_in("DM Name:", with: 'Carl')
+      click_button('Update')
+
+      expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}")
+      expect(page).to have_content('Carl')
+    end
   end
 end

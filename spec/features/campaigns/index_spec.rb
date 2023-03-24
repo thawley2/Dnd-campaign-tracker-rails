@@ -48,7 +48,7 @@ RSpec.describe '/campaigns', type: :feature do
       click_link("New Campaign")
 
       expect(page).to have_current_path('/campaigns/new')
-save_and_open_page
+# save_and_open_page
       fill_in 'Campaign Name:', with: 'Tales from the Infinite Staircase'
       fill_in 'DM Name:', with: 'Tony'
       fill_in 'First DM:', with: false
