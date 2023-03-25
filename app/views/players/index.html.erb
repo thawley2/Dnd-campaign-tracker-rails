@@ -5,4 +5,5 @@
   <p>Character Name: <%= player.character_name %></p>
   <p>New Player: <%= player.new_player %></p>
   <p>Character Level: <%= player.char_lvl %></p>
+  <%= button_to "Update #{player.player_name}", "/players/#{player.id}/edit", method: :get %>
   <% end %>
