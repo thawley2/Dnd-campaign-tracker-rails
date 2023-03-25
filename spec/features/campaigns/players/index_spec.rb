@@ -45,18 +45,17 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
 
     it 'I see a link at the bottom of the page to add a new player to the campaign, "Add Player"' do
       visit "/campaigns/#{@waterdeep.id}/players"
-      save_and_open_page
       click_button('Add Player')
 
       expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players/new")
-save_and_open_page
+
       fill_in('Player Name:', with: 'Starsky')
       fill_in('Character Name:', with: 'Doggy Doggerston')
       fill_in('New Player:', with: true)
       fill_in('Character Level:', with: 1)
 
       click_button("Add Player")
-save_and_open_page
+
       expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players")
       expect(page).to have_content('Starsky')
       expect(page).to have_content('Doggy Doggerston')
