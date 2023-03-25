@@ -6,6 +6,6 @@ class Player < ApplicationRecord
   end
 
   def self.new_player_true
-    Player.where(new_player: true)
+    where(new_player: true)
   end
 end
