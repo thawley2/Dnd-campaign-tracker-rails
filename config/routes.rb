@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/campaigns', to: 'campaigns#index'
-  get '/campaigns/:id', to: 'campaigns#show'
   get '/campaigns/new', to: 'campaigns#new'
+  get '/campaigns/:id', to: 'campaigns#show'
   post '/campaigns', to: 'campaigns#create'
   get '/campaigns/:id/edit', to: 'campaigns#edit'
   patch '/campaigns/:id', to: 'campaigns#update'
