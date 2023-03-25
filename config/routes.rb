@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/players/:id', to: 'players#show'
   get '/campaigns/:id', to: 'campaigns#show'
   get '/campaigns/:campaign_id/players', to: 'campaigns/players#index'
+  get '/campaigns/:campaign_id/players/new', to: 'campaigns/players#new'
+  post '/campaigns/:campaign_id/players', to: 'campaigns/players#create'
 end
