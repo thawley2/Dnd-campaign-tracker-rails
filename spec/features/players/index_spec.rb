@@ -56,5 +56,21 @@ RSpec.describe '/players', type: :feature do
 
       expect(page).to have_current_path('/campaigns')
     end
+
+    it 'I see a button next to every player to edit their information' do
+      visit '/players'
+      click_button("Update #{@angel.player_name}")
+
+      expect(page).to have_current_path("/players/#{@angel.id}/edit")
+
+      fill_in("Character Name:", with: 'Snow Angel')
+
+      click_button('Update')
+
+      expect(page).to have_current_path("/players/#{@angel.id}")
+      expect(page).to have_content('Snow Angel')
+      expect(page).to_not have_content('Snow Devil')
+
+    end
   end
 end
