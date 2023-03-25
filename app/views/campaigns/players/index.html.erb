@@ -6,5 +6,6 @@
 <p>New: <%= player.new_player %></p>
 <p>Character Level: <%= player.char_lvl %></p>
 <% end %>
-
+<%= link_to 'Sort Names', "/campaigns/#{@campaign.id}/players?order_by=player_name", method: :get %>
+<br>
 <%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
