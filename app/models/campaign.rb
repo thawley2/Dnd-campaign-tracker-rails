@@ -8,4 +8,8 @@ class Campaign < ApplicationRecord
   def num_of_players
     players.size
   end
+
+  def order_players(param)
+    players.order(param)
+  end
 end
