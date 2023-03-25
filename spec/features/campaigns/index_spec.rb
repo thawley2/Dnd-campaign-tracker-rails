@@ -60,5 +60,12 @@ RSpec.describe '/campaigns', type: :feature do
       expect(page).to have_content('Tales from the Infinite Staircase')
 
     end
+
+    it 'I see the title of the campaign as a link that takes me to that Campaigns show page' do
+      visit '/campaigns'
+      click_link("Waterdeep")
+
+      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}")
+    end
   end
 end
