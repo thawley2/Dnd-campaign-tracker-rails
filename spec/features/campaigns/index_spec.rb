@@ -67,5 +67,24 @@ RSpec.describe '/campaigns', type: :feature do
 
       expect(page).to have_current_path("/campaigns/#{@waterdeep.id}")
     end
+
+    it 'I see a link next to every campaign to edit that campaigns info' do
+
+      visit '/campaigns'
+
+      expect(page).to have_button('Update Waterdeep')
+      expect(page).to have_button('Update Dragon Heist')
+
+      click_button('Update Waterdeep')
+
+      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/edit")
+
+      fill_in("DM Name:", with: 'Carl')
+      click_button('Update')
+
+      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}")
+      expect(page).to have_content('Carl')
+      expect(page).to_not have_content('Thomas')
+    end
   end
 end
