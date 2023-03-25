@@ -19,23 +19,23 @@ RSpec.describe '/players', type: :feature do
     it 'I see each player in the system including the players attributes' do
       visit '/players'
 
-      expect(page).to have_content(@angel.character_name)
-      expect(page).to have_content("Player Name: #{@angel.player_name}")
+      expect(page).to have_content(@angel.player_name)
+      expect(page).to have_content("Character Name: #{@angel.character_name}")
       expect(page).to have_content("New Player: #{@angel.new_player}")
       expect(page).to have_content("Character Level: #{@angel.char_lvl}")
 
-      expect(page).to have_content(@margaret.character_name)
-      expect(page).to have_content("Player Name: #{@margaret.player_name}")
+      expect(page).to have_content(@margaret.player_name)
+      expect(page).to have_content("Character Name: #{@margaret.character_name}")
       expect(page).to have_content("New Player: #{@margaret.new_player}")
       expect(page).to have_content("Character Level: #{@margaret.char_lvl}")
 
-      expect(page).to have_content(@crow.character_name)
-      expect(page).to have_content("Player Name: #{@crow.player_name}")
+      expect(page).to have_content(@crow.player_name)
+      expect(page).to have_content("Character Name: #{@crow.character_name}")
       expect(page).to have_content("New Player: #{@crow.new_player}")
       expect(page).to have_content("Character Level: #{@crow.char_lvl}")
 
-      expect(page).to have_content(@alec.character_name)
-      expect(page).to have_content("Player Name: #{@alec.player_name}")
+      expect(page).to have_content(@alec.player_name)
+      expect(page).to have_content("Character Name: #{@alec.character_name}")
       expect(page).to have_content("New Player: #{@alec.new_player}")
       expect(page).to have_content("Character Level: #{@alec.char_lvl}")
     end
