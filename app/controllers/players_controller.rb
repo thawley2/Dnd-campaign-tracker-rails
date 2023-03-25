@@ -12,9 +12,9 @@ class PlayersController < ApplicationController
   end
 
   def update
-    @player = Player.find(params[:id])
-    @player.update(player_params)
-    redirect_to "/players/#{@player.id}"
+    player = Player.find(params[:id])
+    player.update(player_params)
+    redirect_to "/players/#{player.id}"
   end
 
   private
