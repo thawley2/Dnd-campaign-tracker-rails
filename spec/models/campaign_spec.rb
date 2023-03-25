@@ -15,19 +15,27 @@ RSpec.describe Campaign, type: :model do
   end
 
   describe 'instance methods' do
-    it '::order_by_created_at' do
-      
-      expect(Campaign.order_by_created_at).to eq([@waterdeep, @dragon_heist])
-      
-      @dragon_heist.created_at = "2012-02-27 00:00:00"
-      @dragon_heist.save
-
-      expect(Campaign.order_by_created_at).to eq([@dragon_heist, @waterdeep])
+    describe '::order_by_created_at' do
+      it 'can order campaigns by their created_at date' do
+        
+        expect(Campaign.order_by_created_at).to eq([@waterdeep, @dragon_heist])
+        
+        @dragon_heist.created_at = "2012-02-27 00:00:00"
+        @dragon_heist.save
+        
+        expect(Campaign.order_by_created_at).to eq([@dragon_heist, @waterdeep])
+      end
     end
-
-    it '#num_of_players' do
-      
-      expect(@dragon_heist.num_of_players).to eq(3)
+    describe '#num_of_players' do
+      it 'can return an integer of the number of players for a campaign' do
+        expect(@dragon_heist.num_of_players).to eq(3)
+      end
+    end
+    
+    describe '#order_players()' do
+      it 'can order players in a campaign by their player_name' do
+        expect(@dragon_heist.order_players('player_name')).to eq([@alec, @andrew, @crow])
+      end
     end
   end
 end
