@@ -6,17 +6,17 @@ RSpec.describe '/players', type: :feature do
     @waterdeep = Campaign.create!(campaign_name: 'Waterdeep', dm_name: 'Thomas', first_dm: true, difficult_rating: 5)
     @dragon_heist = Campaign.create!(campaign_name: 'Dragon Heist', dm_name: 'Lucy', first_dm: false, difficult_rating: 4)
 
-    @angel = @waterdeep.players.create!(player_name: 'Angel', character_name: 'Snow Devil', new_player: false, char_lvl: 2)
-    @margaret = @waterdeep.players.create!(player_name: 'Margaret', character_name: 'Marcus Arelious', new_player: false, char_lvl: 2)
+    @angel = @waterdeep.players.create!(player_name: 'Angel', character_name: 'Snow Devil', new_player: true, char_lvl: 2)
+    @margaret = @waterdeep.players.create!(player_name: 'Margaret', character_name: 'Marcus Arelious', new_player: false, char_lvl: 5)
 
     @crow = @dragon_heist.players.create!(player_name: 'Crow', character_name: 'Nocturia', new_player: true, char_lvl: 2)
-    @alec = @dragon_heist.players.create!(player_name: 'Alec', character_name: 'Hockly', new_player: false, char_lvl: 2)
+    @alec = @dragon_heist.players.create!(player_name: 'Alec', character_name: 'Hockly', new_player: true, char_lvl: 2)
     @andrew = @dragon_heist.players.create!(player_name: 'Andrew', character_name: 'Georgio Clunamous', new_player: false, char_lvl: 2)
   end
 
   describe 'as a visitor, when I visit the players index page' do
 
-    it 'I see each player in the system including the players attributes' do
+    it 'I see only players in the system where new_player = true including the players attributes' do
       visit '/players'
 
       expect(page).to have_content(@angel.player_name)
@@ -24,10 +24,10 @@ RSpec.describe '/players', type: :feature do
       expect(page).to have_content("New Player: #{@angel.new_player}")
       expect(page).to have_content("Character Level: #{@angel.char_lvl}")
 
-      expect(page).to have_content(@margaret.player_name)
-      expect(page).to have_content("Character Name: #{@margaret.character_name}")
-      expect(page).to have_content("New Player: #{@margaret.new_player}")
-      expect(page).to have_content("Character Level: #{@margaret.char_lvl}")
+      expect(page).to_not have_content(@margaret.player_name)
+      expect(page).to_not have_content("Character Name: #{@margaret.character_name}")
+      expect(page).to_not have_content("New Player: #{@margaret.new_player}")
+      expect(page).to_not have_content("Character Level: #{@margaret.char_lvl}")
 
       expect(page).to have_content(@crow.player_name)
       expect(page).to have_content("Character Name: #{@crow.character_name}")
