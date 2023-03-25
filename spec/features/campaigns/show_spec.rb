@@ -55,7 +55,7 @@ RSpec.describe '/campaigns/:id', type: :feature do
 
     it 'I see a link to update the Campaign, "Update Campaign"' do
       visit "/campaigns/#{@dragon_heist.id}"
-      click_link("Update Campaign")
+      click_button("Update Campaign")
 
       expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/edit")
 # save_and_open_page
