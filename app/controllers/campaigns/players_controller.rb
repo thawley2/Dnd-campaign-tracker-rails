@@ -4,7 +4,7 @@ class Campaigns::PlayersController < ApplicationController
     if params[:order_by].nil?
       @players = @campaign.players
     else
-      @players = @campaign.players.order(params[:order_by])
+      @players = @campaign.order_players(params[:order_by])
     end
   end
 

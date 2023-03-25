@@ -3,5 +3,6 @@
 <% @campaigns.each do |campaign| %>
   <h2><%= link_to campaign.campaign_name, "/campaigns/#{campaign.id}" %></h2>
       <p class="tab">- Created: <%= campaign.created_at %></p>
+      <p> <%= button_to "Update #{campaign.campaign_name}", "/campaigns/#{campaign.id}/edit", method: :get %></p>
 <% end %>
 <%= link_to 'New Campaign', '/campaigns/new' %>
