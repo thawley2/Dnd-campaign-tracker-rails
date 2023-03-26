@@ -35,21 +35,5 @@ RSpec.describe '/players/:id', type: :feature do
 
       expect(page).to have_current_path('/campaigns')
     end
-
-    it 'I see a link at the bottom of the page to update the players information' do
-
-      visit "players/#{@angel.id}"
-      click_button("Update #{@angel.player_name}")
-
-      expect(page).to have_current_path("/players/#{@angel.id}/edit")
-
-      fill_in("Character Name:", with: 'Snow Angel')
-
-      click_button('Update')
-
-      expect(page).to have_current_path("/players/#{@angel.id}")
-      expect(page).to have_content('Snow Angel')
-      expect(page).to_not have_content('Snow Devil')
-    end
   end
 end

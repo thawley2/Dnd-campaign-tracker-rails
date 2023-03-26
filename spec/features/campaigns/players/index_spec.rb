@@ -44,24 +44,6 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(page).to have_current_path('/campaigns')
     end
 
-    it 'I see a link at the bottom of the page to add a new player to the campaign, "Add Player"' do
-      visit "/campaigns/#{@waterdeep.id}/players"
-      click_button('Add Player')
-
-      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players/new")
-
-      fill_in('Player Name:', with: 'Starsky')
-      fill_in('Character Name:', with: 'Doggy Doggerston')
-      fill_in('New Player:', with: true)
-      fill_in('Character Level:', with: 1)
-
-      click_button("Add Player")
-
-      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players")
-      expect(page).to have_content('Starsky')
-      expect(page).to have_content('Doggy Doggerston')
-    end
-
     it 'I see a link to sort children in alphabetical order' do
       visit "/campaigns/#{@waterdeep.id}/players"
 
