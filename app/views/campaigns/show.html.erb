@@ -6,3 +6,5 @@
 <p>Difficult Rating: <%= @campaign.difficult_rating %>
 <p>Total Players: <%= @num_of_players %></p>
 <p> <%= button_to "Update Campaign", "/campaigns/#{@campaign.id}/edit", method: :get %></p>
+<br>
+<%= button_to "Delete", "/campaigns/#{@campaign.id}", method: :delete %>
