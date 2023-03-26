@@ -74,5 +74,20 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(@angel.player_name).to appear_before(@crow.player_name)
       expect(@crow.player_name).to appear_before(@margaret.player_name)
     end
+
+    it 'I see a button next to every player to edit their information' do
+      visit "/campaigns/#{@waterdeep.id}/players"
+      click_button("Update #{@angel.player_name}")
+
+      expect(page).to have_current_path("/players/#{@angel.id}/edit")
+
+      fill_in("Character Name:", with: 'Snow Angel')
+
+      click_button('Update')
+
+      expect(page).to have_current_path("/players/#{@angel.id}")
+      expect(page).to have_content('Snow Angel')
+      expect(page).to_not have_content('Snow Devil')
+    end
   end
 end
