@@ -1,11 +1,7 @@
 class Campaigns::PlayersController < ApplicationController
   def index
     @campaign = Campaign.find(params[:campaign_id])
-    if params[:order_by].nil?
-      @players = @campaign.players
-    else
-      @players = @campaign.order_players(params[:order_by])
-    end
+    @players = @campaign.retrieve_players(params)
   end
 
   def new

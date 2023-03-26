@@ -7,7 +7,7 @@ RSpec.describe '/campaigns/:campaign_id/players/new', type: :feature do
 
   describe 'When I visit a campaigns players index page I see a link to create a new player' do
     it 'I click on the link to create a new player and fill out new player info' do
-      
+
       visit "/campaigns/#{@waterdeep.id}/players"
       click_button('Add Player')
 
@@ -15,7 +15,7 @@ RSpec.describe '/campaigns/:campaign_id/players/new', type: :feature do
 
       fill_in('Player Name:', with: 'Starsky')
       fill_in('Character Name:', with: 'Doggy Doggerston')
-      fill_in('New Player:', with: true)
+      select true, :from => "New Player:"
       fill_in('Character Level:', with: 1)
 
       click_button("Add Player")
