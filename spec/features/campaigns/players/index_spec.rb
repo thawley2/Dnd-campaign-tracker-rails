@@ -44,24 +44,6 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(page).to have_current_path('/campaigns')
     end
 
-    it 'I see a link at the bottom of the page to add a new player to the campaign, "Add Player"' do
-      visit "/campaigns/#{@waterdeep.id}/players"
-      click_button('Add Player')
-
-      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players/new")
-
-      fill_in('Player Name:', with: 'Starsky')
-      fill_in('Character Name:', with: 'Doggy Doggerston')
-      fill_in('New Player:', with: true)
-      fill_in('Character Level:', with: 1)
-
-      click_button("Add Player")
-
-      expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players")
-      expect(page).to have_content('Starsky')
-      expect(page).to have_content('Doggy Doggerston')
-    end
-
     it 'I see a link to sort children in alphabetical order' do
       visit "/campaigns/#{@waterdeep.id}/players"
 
@@ -73,6 +55,28 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(page).to have_current_path("/campaigns/#{@waterdeep.id}/players?order_by=player_name")
       expect(@angel.player_name).to appear_before(@crow.player_name)
       expect(@crow.player_name).to appear_before(@margaret.player_name)
+    end
+
+    it 'I see a button next to every player to edit their information' do
+      visit "/campaigns/#{@waterdeep.id}/players"
+      click_button("Update #{@angel.player_name}")
+
+      expect(page).to have_current_path("/players/#{@angel.id}/edit")
+
+      fill_in("Character Name:", with: 'Snow Angel')
+
+      click_button('Update')
+
+      expect(page).to have_current_path("/players/#{@angel.id}")
+      expect(page).to have_content('Snow Angel')
+      expect(page).to_not have_content('Snow Devil')
+    end
+
+    it 'I see a button next to every player to edit their information' do
+      visit '/players'
+      click_button("Update #{@crow.player_name}")
+
+      expect(page).to have_current_path("/players/#{@crow.id}/edit")
     end
   end
 end
