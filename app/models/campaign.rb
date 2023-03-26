@@ -9,7 +9,21 @@ class Campaign < ApplicationRecord
     players.size
   end
 
-  def order_players(param)
-    players.order(param)
+  def retrieve_players(params)
+    if !params[:order_by].nil?
+      order_players(params)
+    elsif !params[:level].nil?
+      sort_players_by_lvl(params)
+    else
+      players
+    end
+  end
+
+  def order_players(params)
+    players.order(params[:order_by])
+  end
+
+  def sort_players_by_lvl(params)
+    players.where('char_lvl > ?', params[:level])
   end
 end

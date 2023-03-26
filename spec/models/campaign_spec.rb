@@ -5,7 +5,7 @@ RSpec.describe Campaign, type: :model do
     @waterdeep = Campaign.create!(campaign_name: 'Waterdeep', dm_name: 'Thomas', first_dm: true, difficult_rating: 5)
     @dragon_heist = Campaign.create!(campaign_name: 'Dragon Heist', dm_name: 'Dan', first_dm: false, difficult_rating: 4,)
 
-    @crow = @dragon_heist.players.create!(player_name: 'Crow', character_name: 'Nocturia', new_player: true, char_lvl: 2)
+    @crow = @dragon_heist.players.create!(player_name: 'Crow', character_name: 'Nocturia', new_player: true, char_lvl: 3)
     @alec = @dragon_heist.players.create!(player_name: 'Alec', character_name: 'Hockly', new_player: false, char_lvl: 2)
     @andrew = @dragon_heist.players.create!(player_name: 'Andrew', character_name: 'Georgio Clunamous', new_player: false, char_lvl: 2)
   end
@@ -34,7 +34,20 @@ RSpec.describe Campaign, type: :model do
     
     describe '#order_players()' do
       it 'can order players in a campaign by their player_name' do
-        expect(@dragon_heist.order_players('player_name')).to eq([@alec, @andrew, @crow])
+        expect(@dragon_heist.order_players({order_by: 'player_name'})).to eq([@alec, @andrew, @crow])
+      end
+    end
+
+    describe '#sort_players_by_lvl' do
+      it 'can select players above a certain char_lvl' do
+        expect(@dragon_heist.sort_players_by_lvl({level: 2})).to eq([@crow])
+      end
+    end
+
+    describe '#retrieve_players' do
+      it 'can retrieve players by what is set in the params' do
+        expect(@dragon_heist.retrieve_players({order_by: 'player_name'})).to eq([@alec, @andrew, @crow])
+        expect(@dragon_heist.retrieve_players({level: 2})).to eq([@crow])
       end
     end
   end

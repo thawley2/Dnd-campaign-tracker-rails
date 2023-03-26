@@ -8,6 +8,12 @@
 <%= button_to "Update #{player.player_name}", "/players/#{player.id}/edit", method: :get %>
 <% end %>
 <br>
+<%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
+<br><br>
 <%= link_to 'Sort Names', "/campaigns/#{@campaign.id}/players?order_by=player_name", method: :get %>
 <br><br>
-<%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
+<%= form_with url: "/campaigns/#{@campaign.id}/players", method: :get, local: true do |form| %>
+<%= form.label :level, "Character lvl:" %>
+<%= form.text_field :level %>
+<%= form.submit "Only show players above selected lvl" %>
+<% end %>

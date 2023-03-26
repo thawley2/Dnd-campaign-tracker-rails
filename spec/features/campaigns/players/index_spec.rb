@@ -73,10 +73,23 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
     end
 
     it 'I see a button next to every player to edit their information' do
-      visit '/players'
+      visit "/campaigns/#{@waterdeep.id}/players"
       click_button("Update #{@crow.player_name}")
 
       expect(page).to have_current_path("/players/#{@crow.id}/edit")
+    end
+
+    it 'has a form to show players above char_lvl' do
+      visit "/campaigns/#{@waterdeep.id}/players"
+
+      fill_in "Character lvl:", with: 4
+
+      click_button('Only show players above selected lvl')
+
+      expect(current_path).to eq("/campaigns/#{@waterdeep.id}/players")
+      expect(page).to have_content(@margaret.player_name)
+      expect(page).to_not have_content(@crow.player_name)
+      expect(page).to_not have_content(@angel.player_name)
     end
   end
 end
