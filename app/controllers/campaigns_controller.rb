@@ -26,6 +26,13 @@ class CampaignsController < ApplicationController
     redirect_to "/campaigns/#{campaign.id}"
   end
 
+  def destroy
+    campaign = Campaign.find(params[:id])
+    campaign.players.destroy_all
+    campaign.destroy
+    redirect_to "/campaigns"
+  end
+
   private
   def campaign_params
     params.permit(:campaign_name, :dm_name, :first_dm, :difficult_rating)

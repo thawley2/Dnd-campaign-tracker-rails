@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/campaigns', to: 'campaigns#create'
   get '/campaigns/:id/edit', to: 'campaigns#edit'
   patch '/campaigns/:id', to: 'campaigns#update'
+  delete '/campaigns/:id', to: 'campaigns#destroy'
   get '/players', to: 'players#index'
   get '/players/:id', to: 'players#show'
   get '/players/:id/edit', to: 'players#edit'

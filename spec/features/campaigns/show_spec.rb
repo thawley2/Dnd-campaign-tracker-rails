@@ -52,5 +52,21 @@ RSpec.describe '/campaigns/:id', type: :feature do
 
       expect(page).to have_current_path("/campaigns/#{@dragon_heist.id}/players")
     end
+
+    it 'I see a button next to the campaign to delete the campaign' do
+      visit "/campaigns/#{@dragon_heist.id}"
+
+      click_button("Delete")
+
+    end
+
+    it 'Whe I click the delete button I am redirected to /campaigns and the campaign is not there' do
+      visit "/campaigns/#{@dragon_heist.id}"
+
+      click_button("Delete")
+
+      expect(current_path).to eq("/campaigns")
+      expect(page).to_not have_content(@dragon_heist.campaign_name)
+    end
   end
 end
