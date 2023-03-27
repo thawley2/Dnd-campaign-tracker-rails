@@ -1,10 +1,12 @@
 <h1><%= @campaign.campaign_name%></h1>
 <hr>
+
 <%= link_to "#{@campaign.campaign_name} Players", "/campaigns/#{@campaign.id}/players" %>
 <p>Name of DM: <%= @campaign.dm_name %>
 <p>First DM: <%= @campaign.first_dm %>
 <p>Difficult Rating: <%= @campaign.difficult_rating %>
 <p>Total Players: <%= @num_of_players %></p>
+
 <p> <%= button_to "Update Campaign", "/campaigns/#{@campaign.id}/edit", method: :get %></p>
 <br>
-<%= button_to "Delete", "/campaigns/#{@campaign.id}", method: :delete %>
+<%= button_to "Delete Campaign", "/campaigns/#{@campaign.id}", method: :delete %>

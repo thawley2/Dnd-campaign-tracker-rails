@@ -1,8 +1,11 @@
 <h1>DnD Campaigns</h1>
 <hr>
+
 <% @campaigns.each do |campaign| %>
   <h2><%= link_to campaign.campaign_name, "/campaigns/#{campaign.id}" %></h2>
       <p class="tab">- Created: <%= campaign.created_at %></p>
       <p> <%= button_to "Update #{campaign.campaign_name}", "/campaigns/#{campaign.id}/edit", method: :get %></p>
+      <p><%= button_to "Delete #{campaign.campaign_name}", "/campaigns/#{campaign.id}", method: :delete %></p>
 <% end %>
+
 <%= link_to 'New Campaign', '/campaigns/new' %>

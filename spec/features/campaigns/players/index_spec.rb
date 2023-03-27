@@ -7,7 +7,7 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
 
       @margaret = @waterdeep.players.create!(player_name: 'Margaret', character_name: 'Marcus Arelious', new_player: false, char_lvl: 5)
       @crow = @waterdeep.players.create!(player_name: 'Crow', character_name: 'Nocturia', new_player: true, char_lvl: 2)
-      @angel = @waterdeep.players.create!(player_name: 'Angel', character_name: 'Snow Devil', new_player: false, char_lvl: 2)
+      @angel = @waterdeep.players.create!(player_name: 'Angel', character_name: 'Snow Devil', new_player: true, char_lvl: 2)
     end
 
     it 'I see each player that is associated with that campaign with each players attributes' do
@@ -90,6 +90,16 @@ RSpec.describe '/campaigns/:campaign_id/players', type: :feature do
       expect(page).to have_content(@margaret.player_name)
       expect(page).to_not have_content(@crow.player_name)
       expect(page).to_not have_content(@angel.player_name)
+    end
+
+    it 'it has a delete button next to each player' do
+      visit "/campaigns/#{@waterdeep.id}/players"
+      
+      click_button("Delete #{@angel.player_name}")
+
+      expect(current_path).to eq('/players')
+      expect(page).to_not have_content(@angel.player_name)
+      expect(page).to have_content(@crow.player_name)
     end
   end
 end

@@ -1,12 +1,13 @@
 <h1>Edit Campaign</h1>
 <hr>
+
 <%= form_with url: "/campaigns/#{@campaign.id}", method: :patch, local: true do |form| %>
   <%= form.label :campaign_name, "Campaign Name:" %>
   <%= form.text_field :campaign_name, value: @campaign.campaign_name %><br><br>
   <%= form.label :dm_name, "DM Name:" %>
   <%= form.text_field :dm_name, value: @campaign.dm_name %><br><br>
   <%= form.label :first_dm, "First DM:" %>
-  <%= form.text_field :first_dm, value: @campaign.first_dm %><br><br>
+  <%= form.select :first_dm, [true, false] %><br><br>
   <%= form.label :difficult_rating, "Difficulty Rating:" %>
   <%= form.text_field :difficult_rating, value: @campaign.difficult_rating %><br><br>
   <%= form.submit 'Update' %>

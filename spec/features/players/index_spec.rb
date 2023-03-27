@@ -72,5 +72,15 @@ RSpec.describe '/players', type: :feature do
       expect(page).to_not have_content('Snow Devil')
 
     end
+
+    it 'it has a delete button next to each player' do
+      visit '/players'
+      
+      click_button("Delete #{@angel.player_name}")
+
+      expect(current_path).to eq('/players')
+      expect(page).to_not have_content(@angel.player_name)
+      expect(page).to have_content(@crow.player_name)
+    end
   end
 end

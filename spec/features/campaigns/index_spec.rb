@@ -67,5 +67,15 @@ RSpec.describe '/campaigns', type: :feature do
       expect(page).to have_content('Carl')
       expect(page).to_not have_content('Thomas')
     end
+
+    it 'has a delete button next to each campaign' do
+      visit '/campaigns'
+
+      click_button("Delete #{@waterdeep.campaign_name}")
+
+      expect(current_path).to eq('/campaigns')
+      expect(page).to_not have_content('Waterdeep')
+      expect(page).to have_content('Dragon Heist')
+    end
   end
 end

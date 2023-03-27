@@ -1,9 +1,11 @@
 <h1><%= @player.player_name %></h1>
 <hr>
+
 <h3>Member of: <%= @player.player_campaign %></h3> 
 <p>Character Name: <%= @player.character_name %></p>
 <p>New Player: <%= @player.new_player %></p>
 <p>Character Level: <%= @player.char_lvl %></p>
+
 <p><%= button_to "Update #{@player.player_name}", "/players/#{@player.id}/edit", method: :get %></p>
 <br>
-<%= button_to "Delete", "/players/#{@player.id}", method: :delete %>
+<%= button_to "Delete #{@player.player_name}", "/players/#{@player.id}", method: :delete %>
