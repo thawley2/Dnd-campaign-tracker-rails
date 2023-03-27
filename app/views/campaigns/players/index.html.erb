@@ -1,17 +1,22 @@
 <h1><%= @campaign.campaign_name %> Players</h1>
 <hr>
+
+<%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
+
 <% @players.each do |player| %>
 <h3>Name: <%= player.player_name %></h3>
 <p>Character: <%= player.character_name %></p>
 <p>New: <%= player.new_player %></p>
 <p>Character Level: <%= player.char_lvl %></p>
 <%= button_to "Update #{player.player_name}", "/players/#{player.id}/edit", method: :get %>
-<% end %>
+<p><%= button_to "Delete #{player.player_name}", "/players/#{player.id}", method: :delete %></p>
 <br>
-<%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
-<br><br>
+<% end %>
+
+<br>
 <%= link_to 'Sort Names', "/campaigns/#{@campaign.id}/players?order_by=player_name", method: :get %>
 <br><br>
+
 <%= form_with url: "/campaigns/#{@campaign.id}/players", method: :get, local: true do |form| %>
 <%= form.label :level, "Character lvl:" %>
 <%= form.text_field :level %>
