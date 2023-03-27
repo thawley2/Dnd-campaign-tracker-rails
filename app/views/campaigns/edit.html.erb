@@ -1,5 +1,6 @@
 <h1>Edit Campaign</h1>
 <hr>
+
 <%= form_with url: "/campaigns/#{@campaign.id}", method: :patch, local: true do |form| %>
   <%= form.label :campaign_name, "Campaign Name:" %>
   <%= form.text_field :campaign_name, value: @campaign.campaign_name %><br><br>
