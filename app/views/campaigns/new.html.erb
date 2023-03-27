@@ -1,5 +1,6 @@
 <h1>Create New Campaign</h1>
 <hr>
+
 <%= form_with url: '/campaigns', method: :post, local: true do |form| %>
   <%= form.label :campaign_name, "Campaign Name:" %>
   <%= form.text_field :campaign_name %><br><br>
