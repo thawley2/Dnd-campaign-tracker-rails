@@ -15,7 +15,7 @@ RSpec.describe Campaign, type: :model do
   end
 
   describe 'instance methods' do
-    describe '::order_by_created_at' do
+    describe '#order_by_created_at' do
       it 'can order campaigns by their created_at date' do
         
         expect(Campaign.order_by_created_at).to eq([@waterdeep, @dragon_heist])
