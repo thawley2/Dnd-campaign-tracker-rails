@@ -7,7 +7,7 @@
   <%= form.label :character_name, "Character Name:" %>
   <%= form.text_field :character_name %><br><br>
   <%= form.label :new_player, "New Player:" %>
-  <%= form.select :new_player, [true, false] %><br><br>
+  <%= form.select :new_player, [['Yes', true], ['No', false]] %><br><br>
   <%= form.label :char_lvl, "Character Level:" %>
   <%= form.text_field :char_lvl %><br><br>
   <%= form.submit 'Add Player' %>
