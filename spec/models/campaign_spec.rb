@@ -46,6 +46,8 @@ RSpec.describe Campaign, type: :model do
 
     describe '#retrieve_players' do
       it 'can retrieve players by what is set in the params' do
+
+        expect(@dragon_heist.retrieve_players({order_by: nil})).to eq([@crow, @alec, @andrew])
         expect(@dragon_heist.retrieve_players({order_by: 'player_name'})).to eq([@alec, @andrew, @crow])
         expect(@dragon_heist.retrieve_players({level: 2})).to eq([@crow])
       end
