@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   get '/campaigns/:id/edit', to: 'campaigns#edit'
   patch '/campaigns/:id', to: 'campaigns#update'
   delete '/campaigns/:id', to: 'campaigns#destroy'
+
   get '/players', to: 'players#index'
   get '/players/:id', to: 'players#show'
   get '/players/:id/edit', to: 'players#edit'
   patch '/players/:id', to: 'players#update'
   delete 'players/:id', to: 'players#destroy'
+
   get '/campaigns/:campaign_id/players', to: 'campaigns/players#index'
   get '/campaigns/:campaign_id/players/new', to: 'campaigns/players#new'
   post '/campaigns/:campaign_id/players', to: 'campaigns/players#create'
