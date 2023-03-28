@@ -2,6 +2,7 @@ class Campaigns::PlayersController < ApplicationController
   def index
     @campaign = Campaign.find(params[:campaign_id])
     @players = @campaign.retrieve_players(params)
+    #set params in hash then pass
   end
 
   def new

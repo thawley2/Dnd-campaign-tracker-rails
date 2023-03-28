@@ -2,7 +2,7 @@
 <hr>
 <%= image_tag 'players.webp', alt: 'DnDragon', class: 'floatRightIcon', height: 350 %>
 <% @players.each do |player| %>
-  <h3><%= player.player_name %></h3>
+  <h3><%= link_to player.player_name, "/players/#{player.id}" %></h3>
   <p>Character Name: <%= player.character_name %></p>
   <p>New Player: <%= player.new_player %></p>
   <p>Character Level: <%= player.char_lvl %></p>

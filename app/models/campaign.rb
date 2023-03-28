@@ -22,7 +22,8 @@ class Campaign < ApplicationRecord
   def order_players(params)
     players.order(params[:order_by])
   end
-
+  
+#filter
   def sort_players_by_lvl(params)
     players.where('char_lvl > ?', params[:level])
   end
