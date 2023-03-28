@@ -1,5 +1,6 @@
 <h1><%= @campaign.campaign_name %> Players</h1>
 <hr>
+<%= image_tag 'players.webp', alt: 'DnDragon', class: 'floatRightIcon', height: 350 %>
 
 <%= button_to 'Add Player', "/campaigns/#{@campaign.id}/players/new", method: :get %>
 

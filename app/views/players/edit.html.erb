@@ -1,5 +1,6 @@
 <h1>Edit Player</h1>
 <hr>
+<%= image_tag 'players.webp', alt: 'DnDragon', class: 'floatRightIcon', height: 350 %>
 
 <%= form_with url: "/players/#{@player.id}", method: :patch, local: true do |form| %>
   <%= form.label :player_name, "Player Name:" %>

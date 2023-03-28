@@ -1,5 +1,6 @@
 <h1> Add Player to <%= @campaign.campaign_name %> </h1>
 <hr>
+<%= image_tag 'players.webp', alt: 'DnDragon', class: 'floatRightIcon', height: 350 %>
 
 <%= form_with url: "/campaigns/#{@campaign.id}/players", method: :post, local: true do |form| %>
   <%= form.label :player_name, "Player Name:" %>

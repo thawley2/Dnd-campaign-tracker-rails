@@ -7,13 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path 'DnDLogo.jpg' %>
   </head>
 
   <body>
+  <%= link_to '/campaigns' do %>
+    <%= image_tag "DnDLogo.jpg", alt: 'DnDLogo', height: 50 %>
+  <% end %>
   <div>
-  <%= link_to 'Campaigns', '/campaigns' %>
+  <%= link_to 'Campaigns', '/campaigns', class: 'link_color' %>
   &nbsp; &nbsp; &nbsp;
-  <%= link_to 'Players', '/players' %>
+  <%= link_to 'Players', '/players', class: 'link_color' %>
   </div>
     <%= yield %>
   </body>
