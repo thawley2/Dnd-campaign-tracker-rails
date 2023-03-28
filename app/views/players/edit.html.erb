@@ -1,5 +1,6 @@
 <h1>Edit Player</h1>
 <hr>
+<%= image_tag 'players.webp', alt: 'DnDragon', class: 'floatRightIcon', height: 350 %>
 
 <%= form_with url: "/players/#{@player.id}", method: :patch, local: true do |form| %>
   <%= form.label :player_name, "Player Name:" %>
@@ -7,7 +8,7 @@
   <%= form.label :character_name, "Character Name:" %>
   <%= form.text_field :character_name, value: @player.character_name %><br><br>
   <%= form.label :new_player, "New Player:" %>
-  <%= form.select :new_player, [true, false] %><br><br>
+  <%= form.select :new_player, [['Yes', true], ['No', false]], selected: @player.new_player %><br><br>
   <%= form.label :char_lvl, "Character Level:" %>
   <%= form.text_field :char_lvl, value: @player.char_lvl %><br><br>
   <%= form.submit 'Update' %>

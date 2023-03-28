@@ -10,7 +10,7 @@ RSpec.describe '/campaigns/new', type: :feature do
 
     fill_in 'Campaign Name:', with: 'Tales from the Infinite Staircase'
     fill_in 'DM Name:', with: 'Tony'
-    select false, from: "First DM:"
+    select 'No', from: "First DM:"
     fill_in 'Difficulty Rating:', with: 5
     click_button("Create")
 

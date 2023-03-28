@@ -1,5 +1,6 @@
 <h1>Create New Campaign</h1>
 <hr>
+<%= image_tag 'campaign.avif', alt: 'DnDragon', class: 'floatRightIcon', height: 300 %>
 
 <%= form_with url: '/campaigns', method: :post, local: true do |form| %>
   <%= form.label :campaign_name, "Campaign Name:" %>
@@ -7,7 +8,7 @@
   <%= form.label :dm_name, "DM Name:" %>
   <%= form.text_field :dm_name %><br><br>
   <%= form.label :first_dm, "First DM:" %>
-  <%= form.select :first_dm, [true, false] %><br><br>
+  <%= form.select :first_dm, [['Yes', true], ['No', false]] %><br><br>
   <%= form.label :difficult_rating, "Difficulty Rating:" %>
   <%= form.text_field :difficult_rating %><br><br>
   <%= form.submit 'Create' %>

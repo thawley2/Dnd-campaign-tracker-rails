@@ -1,5 +1,6 @@
 <h1>DnD Campaigns</h1>
 <hr>
+<%= image_tag 'campaign.avif', alt: 'DnDragon', class: 'floatRightIcon', height: 300 %>
 
 <% @campaigns.each do |campaign| %>
   <h2><%= link_to campaign.campaign_name, "/campaigns/#{campaign.id}" %></h2>

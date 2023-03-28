@@ -1,5 +1,6 @@
 <h1><%= @campaign.campaign_name%></h1>
 <hr>
+<%= image_tag 'campaign.avif', alt: 'DnDragon', class: 'floatRightIcon', height: 300 %>
 
 <%= link_to "#{@campaign.campaign_name} Players", "/campaigns/#{@campaign.id}/players" %>
 <p>Name of DM: <%= @campaign.dm_name %>
