@@ -15,7 +15,7 @@ RSpec.describe '/campaigns/:campaign_id/players/new', type: :feature do
 
       fill_in('Player Name:', with: 'Starsky')
       fill_in('Character Name:', with: 'Doggy Doggerston')
-      select true, :from => "New Player:"
+      select 'Yes', :from => "New Player:"
       fill_in('Character Level:', with: 1)
 
       click_button("Add Player")
