@@ -1,5 +1,5 @@
 class Campaign < ApplicationRecord
-  has_many :players
+  has_many :players, dependent: :destroy
 
   def self.order_by_created_at
     order(created_at: :asc)
@@ -9,11 +9,11 @@ class Campaign < ApplicationRecord
     players.size
   end
 
-  def retrieve_players(params)
-    if !params[:order_by].nil?
-      order_players(params)
-    elsif !params[:level].nil?
-      sort_players_by_lvl(params)
+  def retrieve_players(data)
+    if !data[:order_by].nil?
+      order_players(data)
+    elsif !data[:level].nil?
+      sort_players_by_lvl(data)
     else
       players
     end
@@ -23,7 +23,6 @@ class Campaign < ApplicationRecord
     players.order(params[:order_by])
   end
   
-#filter
   def sort_players_by_lvl(params)
     players.where('char_lvl > ?', params[:level])
   end

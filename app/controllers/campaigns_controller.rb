@@ -28,7 +28,6 @@ class CampaignsController < ApplicationController
 
   def destroy
     campaign = Campaign.find(params[:id])
-    campaign.players.destroy_all
     campaign.destroy
     redirect_to "/campaigns"
   end
